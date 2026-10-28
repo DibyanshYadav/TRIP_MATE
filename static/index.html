@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>TripMate AI</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <div class="page-bg">
+        <div class="gradient-circle circle-1"></div>
+        <div class="gradient-circle circle-2"></div>
+        <div class="gradient-circle circle-3"></div>
+    </div>
+
+    <div class="app">
+
+        <!-- ============ Header ============ -->
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-logo">✈️</div>
+                <div>
+                    <div class="brand-name">TripMate AI</div>
+                    <div class="brand-sub" id="threadInfo">New conversation</div>
+                </div>
+            </div>
+
+            <div class="topbar-actions">
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    Online
+                </div>
+                <button id="newChatBtn" class="ghost-btn" onclick="newChat()" title="Start a new trip plan">
+                    ＋ New chat
+                </button>
+            </div>
+        </header>
+
+        <!-- ============ Chat area ============ -->
+        <main id="chat" class="chat" aria-live="polite">
+
+            <section id="welcome" class="welcome">
+                <div class="badge">A Multi-Agent Travel Planner with LangGraph</div>
+                <h1>Plan your perfect trip with AI</h1>
+                <p>
+                    Flights, trains, hotels, weather, itinerary and budget in one chat.
+                    I may ask you a few questions along the way.
+                </p>
+
+                <div class="prompt-grid">
+                    <button onclick="setPrompt('Plan a 5 day Goa trip from Delhi on 2026-12-05, budget 30000 INR.')">
+                        <span class="pg-title">🏖️ Goa trip</span>
+                        <span class="pg-text">5 days from Delhi, ₹30,000</span>
+                    </button>
+                    <button onclick="setPrompt('Plan a 5 days Dubai trip from Dhaka with flights, hotels and sightseeing.')">
+                        <span class="pg-title">🏙️ Dubai trip</span>
+                        <span class="pg-text">5 days from Dhaka</span>
+                    </button>
+                    <button onclick="setPrompt('Plan a complete 7 days Japan trip from Bangladesh including flights, hotels and sightseeing under 2 lakhs.')">
+                        <span class="pg-title">🗾 Japan trip</span>
+                        <span class="pg-text">7 days under 2 lakhs</span>
+                    </button>
+                    <button onclick="setPrompt('Plan a 7 days Thailand trip from Bangladesh with budget hotels and sightseeing.')">
+                        <span class="pg-title">🌴 Thailand trip</span>
+                        <span class="pg-text">7 days, budget hotels</span>
+                    </button>
+                </div>
+            </section>
+
+            <div id="messages" class="messages"></div>
+        </main>
+
+        <!-- ============ Composer ============ -->
+        <footer class="composer-wrap">
+            <div id="errorBox" class="error-box hidden"></div>
+
+            <div class="composer">
+                <textarea
+                    id="userInput"
+                    rows="1"
+                    placeholder="Message TripMate… (Enter to send, Shift+Enter for new line)"
+                ></textarea>
+
+                <button id="sendBtn" onclick="sendMessage()" aria-label="Send message">
+                    <span id="btnText">➤</span>
+                    <span id="btnLoader" class="loader hidden"></span>
+                </button>
+            </div>
+
+            <div class="composer-hint">
+                TripMate cannot book anything. Always verify prices and availability yourself.
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Map (Leaflet + OpenStreetMap, no API key) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Markdown renderer -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- HTML sanitizer (model output is untrusted) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+    <!-- PDF download -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <script src="/static/script.js"></script>
+
+</body>
+</html>

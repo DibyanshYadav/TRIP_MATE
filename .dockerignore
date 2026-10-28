@@ -1,0 +1,9 @@
+.env
+.git
+.gitignore
+__pycache__/
+*.pyc
+venv/
+.venv/
+geo_cache.json.tmp
+docker-compose.yml
