@@ -14,7 +14,7 @@ short_description: Multi-agent AI travel planner built with LangGraph
 A multi-agent travel planner built with **LangGraph**, **Groq**, **Tavily** and **FastAPI**.
 Tell it where you want to go and it plans the whole trip in one chat: flights, real hotel names, trains and metro, weather, a day-by-day itinerary on a map, a budget, and ready-to-open booking links.
 
-**🔴 Live demo:** https://\<your-hf-username\>-tripmate-ai.hf.space
+**🔴 Live demo:[**(https://trip-mate-ueab.onrender.com/)](https://trip-mate-ueab.onrender.com/)
 **💻 Source:** https://github.com/DibyanshYadav/TRIP_MATE
 
 > TripMate cannot book anything. It builds search links, so always confirm prices and availability on the booking site.
